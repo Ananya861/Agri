@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MSP Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Smart Farming System</h1>
+
+        <h2>Crop Price Prediction & MSP Decision</h2>
+
+        <form method="POST">
+
+            <input type="number"
+                   name="month"
+                   placeholder="Enter Month Number"
+                   required>
+
+            <button type="submit">
+                Predict Price
+            </button>
+
+        </form>
+
+        {% if prediction %}
+
+        <div class="result">
+
+            <h3>Predicted Crop Price: ₹ {{ prediction }}</h3>
+
+            {% if prediction != "Invalid Month" %}
+
+                <h3>Rainfall: {{ rainfall }} mm</h3>
+
+                <h3>Temperature: {{ temperature }} °C</h3>
+
+                <h3>MSP Value: ₹ {{ msp }}</h3>
+
+            {% endif %}
+
+            <h3>Decision: {{ decision }}</h3>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
